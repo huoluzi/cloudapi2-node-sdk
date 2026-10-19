@@ -108,7 +108,7 @@ jobs:
           const pkg=JSON.parse(readFileSync('package.json','utf8'));
           const pack=JSON.parse(readFileSync('build/npm-release/pack.json','utf8'))[0];
           let available=false;
-          for(let attempt=1;attempt<=24;attempt++) {
+          for(let attempt=1;attempt<=40;attempt++) {
             const documents=await Promise.all([
               `https://registry.npmjs.org/${pkg.name}/${pkg.version}`,
               `https://registry.npmjs.org/${pkg.name}`,
@@ -128,8 +128,8 @@ jobs:
               available=true;
               break;
             }
-            console.log(`Waiting for npm registry availability (${attempt}/24)`);
-            if(attempt<24)await delay(15000);
+            console.log(`Waiting for npm registry availability (${attempt}/40)`);
+            if(attempt<40)await delay(15000);
           }
           assert(available,'npm accepted the upload but it is not available yet; retry this release after registry synchronization');
           NODE
