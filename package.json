@@ -1,6 +1,6 @@
 {
   "name": "cloudapi2-node-sdk",
-  "version": "0.2.0-rc.3",
+  "version": "0.2.0-rc.4",
   "description": "Node.js binding for DJI Cloud API 2 3.3.7 with audited Java business API coverage",
   "license": "Apache-2.0",
   "type": "commonjs",

@@ -1,6 +1,7 @@
 name: Source and package checks
 on:
   push:
+    branches: ['**']
   pull_request:
   workflow_call:
     inputs:
