@@ -1,7 +1,6 @@
 {
   "name": "cloudapi2-node-sdk",
-  "version": "0.2.0-rc.2",
-  "private": true,
+  "version": "0.2.0-rc.3",
   "description": "Node.js binding for DJI Cloud API 2 3.3.7 with audited Java business API coverage",
   "license": "Apache-2.0",
   "type": "commonjs",
@@ -70,5 +69,17 @@
   "devDependencies": {
     "typescript": "5.9.3",
     "@types/node": "22.20.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huoluzi/cloudapi2-node-sdk.git"
+  },
+  "homepage": "https://github.com/huoluzi/cloudapi2-node-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/huoluzi/cloudapi2-node-sdk/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }

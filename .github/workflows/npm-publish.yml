@@ -1,0 +1,124 @@
+name: Publish npm and release assets
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing published GitHub Release tag to retry
+        required: true
+        type: string
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    if: github.repository == 'huoluzi/cloudapi2-node-sdk'
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: ${{ inputs.tag || github.event.release.tag_name }}
+
+  publish:
+    needs: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      id-token: write
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
+      NPM_CONFIG_REGISTRY: https://registry.npmjs.org
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ inputs.tag || github.event.release.tag_name }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+      - name: Use pinned npm with OIDC support
+        run: npm install --global npm@11.21.0 --ignore-scripts
+      - name: Check release and package version
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p build/npm-release
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json tagName,isDraft,isPrerelease > build/npm-release/release.json
+          node --input-type=module <<'NODE'
+          import {readFileSync,appendFileSync} from 'node:fs';
+          import assert from 'node:assert/strict';
+          const pkg=JSON.parse(readFileSync('package.json','utf8'));
+          const release=JSON.parse(readFileSync('build/npm-release/release.json','utf8'));
+          const tag=process.env.RELEASE_TAG;
+          assert.match(tag,/^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/);
+          assert.equal(pkg.name,'cloudapi2-node-sdk');
+          assert.equal(tag,'v'+pkg.version);
+          assert.equal(release.tagName,tag);
+          assert.equal(release.isDraft,false);
+          assert.equal(release.isPrerelease,pkg.version.includes('-'));
+          assert.notEqual(pkg.private,true);
+          assert.equal(pkg.repository.url,'git+https://github.com/'+process.env.GITHUB_REPOSITORY+'.git');
+          assert.equal(pkg.publishConfig.registry,'https://registry.npmjs.org');
+          appendFileSync(process.env.GITHUB_ENV,`PACKAGE_VERSION=${pkg.version}\nDIST_TAG=${release.isPrerelease?'next':'latest'}\n`);
+          NODE
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run check:public
+      - run: npm run verify:prebuilt
+      - run: npm run test:package
+      - name: Prepare exact publication artifacts
+        run: |
+          npm pack --ignore-scripts --json --pack-destination build/npm-release > build/npm-release/pack.json
+          git archive --format=zip --prefix="cloudapi2-node-sdk-$PACKAGE_VERSION/" --output="build/npm-release/cloudapi2-node-sdk-$PACKAGE_VERSION.zip" HEAD
+          cd build/npm-release
+          sha256sum "cloudapi2-node-sdk-$PACKAGE_VERSION.tgz" > "cloudapi2-node-sdk-$PACKAGE_VERSION.tgz.sha256"
+          sha256sum "cloudapi2-node-sdk-$PACKAGE_VERSION.zip" > "cloudapi2-node-sdk-$PACKAGE_VERSION.zip.sha256"
+      - name: Check for a previous successful publish
+        id: existing
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync,appendFileSync} from 'node:fs';
+          import assert from 'node:assert/strict';
+          const pkg=JSON.parse(readFileSync('package.json','utf8'));
+          const pack=JSON.parse(readFileSync('build/npm-release/pack.json','utf8'))[0];
+          const response=await fetch(`https://registry.npmjs.org/${pkg.name}/${pkg.version}`);
+          if(response.status===404){appendFileSync(process.env.GITHUB_OUTPUT,'published=false\n');}
+          else {
+            assert(response.ok,`npm registry returned ${response.status}`);
+            const remote=await response.json();
+            assert.equal(remote.dist.integrity,pack.integrity,'Version exists with different bytes; release a new version');
+            appendFileSync(process.env.GITHUB_OUTPUT,'published=true\n');
+          }
+          NODE
+      - name: Publish with npm trusted publishing
+        if: steps.existing.outputs.published != 'true'
+        run: npm publish "build/npm-release/cloudapi2-node-sdk-$PACKAGE_VERSION.tgz" --access public --tag "$DIST_TAG" --provenance
+      - name: Verify registry bytes and install the published package
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import assert from 'node:assert/strict';
+          const pkg=JSON.parse(readFileSync('package.json','utf8'));
+          const pack=JSON.parse(readFileSync('build/npm-release/pack.json','utf8'))[0];
+          const response=await fetch(`https://registry.npmjs.org/${pkg.name}/${pkg.version}`);
+          assert(response.ok,`npm registry returned ${response.status}`);
+          assert.equal((await response.json()).dist.integrity,pack.integrity);
+          NODE
+          npm install --prefix build/registry-consumer --ignore-scripts --no-audit --no-fund "cloudapi2-node-sdk@$PACKAGE_VERSION"
+          node -e "const {FlightHubSDK:s}=require('./build/registry-consumer/node_modules/cloudapi2-node-sdk');if(s.getVersion()!=='3.3.7.0')process.exit(1);s.shutdown();"
+      - name: Attach the same artifacts to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --clobber \
+            "build/npm-release/cloudapi2-node-sdk-$PACKAGE_VERSION.tgz" \
+            "build/npm-release/cloudapi2-node-sdk-$PACKAGE_VERSION.tgz.sha256" \
+            "build/npm-release/cloudapi2-node-sdk-$PACKAGE_VERSION.zip" \
+            "build/npm-release/cloudapi2-node-sdk-$PACKAGE_VERSION.zip.sha256"
+          echo "Published cloudapi2-node-sdk@$PACKAGE_VERSION (npm tag: $DIST_TAG) and verified registry installation." >> "$GITHUB_STEP_SUMMARY"

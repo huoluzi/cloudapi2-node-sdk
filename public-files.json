@@ -93,7 +93,8 @@
     "third_party/build_libwebsockets_linux_x86_64.sh",
     "docs/prebuilt.md",
     "docs/disclaimer.md",
-    "test/examples-native.mjs"
+    "test/examples-native.mjs",
+    "docs/publishing.md"
   ],
   "binaryFiles": [
     "native/linux-x64/cloudapi2_node.node",

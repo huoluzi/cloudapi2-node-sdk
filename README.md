@@ -8,7 +8,7 @@
 
 - 官方仓库：[dji-sdk/Cloud-API-2](https://github.com/dji-sdk/Cloud-API-2)。
 - 锁定提交：**[79c6cc3c0021c7e72d5d94bb37b3dafb9fa50578](https://github.com/dji-sdk/Cloud-API-2/commit/79c6cc3c0021c7e72d5d94bb37b3dafb9fa50578)**，不自动跟随 main。
-- 官方 Java SDK 3.3.7 / C++ 3.3.7.0；本项目 **0.2.0-rc.2 候选版**，原生绑定 API 4。
+- 官方 Java SDK 3.3.7 / C++ 3.3.7.0；本项目为 **0.2.0 系列候选版**，原生绑定 API 4。
 - 版本和内容摘要见 [upstream.lock.json](upstream.lock.json)。构建副本应用三处关闭/析构顺序修复，见 [兼容性](docs/compatibility.md)。
 
 已映射 810 个公开业务签名：19 个根入口、54 个模块的 791 个签名。接口覆盖不代表所有设备动作已通过验收，也不承诺 Java 线程、异常及调度行为完全相同。
@@ -26,6 +26,15 @@
 当前不自行替换 DJI 官方加密依赖，保持原字节和哈希。包内动态库通过 `$ORIGIN` 加载，升级宿主机 OpenSSL 不会自动更新它们。没有证据表明这份官方预编译库持续获得安全回补；版本字符串本身也不足以判断某个具体漏洞能否被利用。
 
 ## 快速开始（无需 C++ 编译）
+
+在 Ubuntu x64（或 Windows 的 WSL2）使用 Node.js 22 / 24，可直接安装 npm 候选版：
+
+```sh
+npm install cloudapi2-node-sdk@next --registry=https://registry.npmjs.org
+```
+
+包内已经包含编译后的 JavaScript、类型声明和 Linux 原生库，无需在消费项目编译 TypeScript/C++。候选版使用 `next` 标签，正式版使用 `latest`。源码开发和 Demo 使用下方的仓库安装方式。
+
 
 **默认带 Ubuntu 22.04 x64 预编译版本**：native/linux-x64/ 包含 .node、libdrtc/libdrpc 和其余运行依赖；无安装时下载二进制的脚本。文件哈希、系统要求及构建环境见 [预编译说明](docs/prebuilt.md)。
 
@@ -102,4 +111,4 @@ node scripts/verify-native.mjs native/linux-x64-next
 - [验证方法](docs/testing.md)、[发布审查](docs/release-review.md)、[变更记录](CHANGELOG.md)。
 - [贡献指南](CONTRIBUTING.md)、[安全问题](SECURITY.md)、[AI 编写及免责说明](docs/disclaimer.md)。
 
-公开仓库应来自 npm run export:release 生成的白名单目录，默认包括源码、示例、Ubuntu 预编译库和依赖声明；export:source 是同一命令的历史别名。现场配置、设备标识、原始日志和私有测试报告不导出。private:true 保持开启，防止误发 npm；不影响 GitHub 开源及本地 npm pack。
+公开仓库应来自 npm run export:release 生成的白名单目录，默认包括源码、示例、Ubuntu 预编译库和依赖声明；export:source 是同一命令的历史别名。现场配置、设备标识、原始日志和私有测试报告不导出。npm 发布固定使用官方 registry，并由 GitHub Release 联动；版本、发布步骤及失败重试见 [发布指南](docs/publishing.md)。
