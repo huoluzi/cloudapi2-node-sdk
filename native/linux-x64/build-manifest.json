@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "node": "v22.23.3",
+  "platform": "linux",
+  "arch": "x64",
+  "glibc": "2.35",
+  "binding": {
+    "bindingApiVersion": 4,
+    "upstreamVersion": "3.3.7"
+  },
+  "sdkVersion": "3.3.7.0",
+  "contractProbes": false,
+  "files": [
+    {
+      "name": "cloudapi2_node.node",
+      "bytes": 46013016,
+      "sha256": "769fe83c638b0ff0fb05591c583ffd523ec975e9f43c4934418f6ccea143d230"
+    },
+    {
+      "name": "libcrypto.so.1.1",
+      "bytes": 3050384,
+      "sha256": "4d3938c4a38ac4f6470d88755be541c0700ef849c0221af2535aaa476dec8f03"
+    },
+    {
+      "name": "libdrpc.so",
+      "bytes": 1355720,
+      "sha256": "81478ace7295412b61fd5f3cabe5b8f788bce2849027ed17fe4b6d0193f10ad9"
+    },
+    {
+      "name": "libdrtc_device_sdk.so",
+      "bytes": 6901112,
+      "sha256": "8c92fb452fae171755ea13f1cd4eafa1ff41ec88a099c16ec3ffdfb7469cfed9"
+    },
+    {
+      "name": "libpaho-mqtt3as.so.1",
+      "bytes": 269560,
+      "sha256": "2eb770ae041c65b9636a37a7b6a0b255f3e572f4d71d432683976daf11eb7da9"
+    },
+    {
+      "name": "libssl.so.1.1",
+      "bytes": 705328,
+      "sha256": "04a0c2a74dfbedda92de8da805b22ca6d14b15025286e9e69fe6fae8642983c8"
+    },
+    {
+      "name": "libwebsockets.so.12",
+      "bytes": 217928,
+      "sha256": "600deb4387a84e9674ba8f99becc927867a8aba6d812ddf7d8878060bdfe7cce"
+    }
+  ],
+  "buildOs": {
+    "ID": "ubuntu",
+    "VERSION_ID": "22.04",
+    "PRETTY_NAME": "Ubuntu 22.04.2 LTS"
+  },
+  "compiler": "11.4.0",
+  "upstream": {
+    "repository": "https://github.com/dji-sdk/Cloud-API-2",
+    "revision": "79c6cc3c0021c7e72d5d94bb37b3dafb9fa50578",
+    "sdkVersion": "3.3.7",
+    "lifecyclePatches": 3
+  },
+  "nodeApiVersion": 8,
+  "artifactVersion": "0.2.0-rc.2",
+  "bindingStripped": true,
+  "requiredSymbolVersions": {
+    "GLIBC": "GLIBC_2.34",
+    "GLIBCXX": "GLIBCXX_3.4.30",
+    "CXXABI": "CXXABI_1.3.13"
+  }
+}

@@ -1,0 +1,30 @@
+Cloud API 2 Node.js binding
+Copyright 2026 cloudapi2-node-sdk contributors. Licensed under Apache-2.0.
+
+This is an independent Node.js binding, not an official DJI SDK distribution.
+DJI and FlightHub names identify the upstream software and its APIs only.
+
+Upstream attribution:
+Cloud API 2 SDK
+Copyright 2026 SZ DJI Technology Co., Ltd.
+First-party upstream source is licensed under Apache License, Version 2.0.
+See LICENSES/Apache-2.0.txt and LICENSES/upstream-NOTICE.txt.
+
+Modified/derived material: generated API declarations and schema, native
+dispatch/converters/probes, Java probe classes, DTO/Java behavior adapters,
+Skeleton backend adaptation and the staged C++ lifecycle patch script.
+These files retain Apache-2.0 notices; Node-specific changes were made in 2026.
+API inventory JSON under audit/ also retains upstream Apache-2.0 attribution.
+Original tooling and binding infrastructure are Apache-2.0 unless marked otherwise.
+
+This distribution includes an Ubuntu-built Node binding and the native runtime
+dependencies in native/linux-x64. DJI proprietary libdrtc/libdrpc remain under
+DJI's terms, not Apache-2.0. All other dependencies retain their own licenses.
+See LICENSES/third-party, LICENSES/upstream-NOTICE.txt, and docs/licensing.md.
+This project is based in part on the work of the libwebsockets project
+(https://libwebsockets.org). Its v2.4.2 source archive is in third_party/.
+Official frontend assets and Java JARs are not included.
+
+The code was written with AI assistance. It is not production-validated and is
+provided AS IS, without warranty, subject to Apache-2.0 sections 7 and 8.
+See docs/disclaimer.md for the actual validation boundaries.

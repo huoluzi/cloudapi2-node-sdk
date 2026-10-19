@@ -1,0 +1,7 @@
+{
+  "ADDRESS": "https://api.example.invalid",
+  "PORT": "443",
+  "NOTIFICATION_SERVER": "wss://api.example.invalid/openapi/v0.9/notification/ws/v1/notifications",
+  "AUTH_HEADER_KEY": "Authorization",
+  "AUTH_HEADER_VALUE": "REPLACE_WITH_YOUR_PRIVATE_AUTH_VALUE"
+}

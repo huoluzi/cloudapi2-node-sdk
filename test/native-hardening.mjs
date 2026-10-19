@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {resolve} from 'node:path';
+import {mkdirSync,writeFileSync} from 'node:fs';
+import {DEFAULT_CONFIG} from '../dist/config.js';
+import {assertBinding} from '../dist/loader.js';
+const native=createRequire(import.meta.url)(resolve(process.env.CLOUDAPI2_TEST_BINDING||'native/linux-x64-phase2/cloudapi2_node.node'));
+const pause=()=>new Promise(r=>setTimeout(r,30));
+mkdirSync('.runtime',{recursive:true});mkdirSync('audit',{recursive:true});
+assert.throws(()=>assertBinding(native),/contract-test/);
+const map=Object.assign(Object.create({inherited:'must not cross the boundary'}),{own:'ok'});
+Object.defineProperty(map,'__proto__',{value:'literal key',enumerable:true});
+map['nul\0key']='preserved';map.constructor='ordinary property';
+const result=native.probeRoundTripMap(map);
+assert.equal(Object.getPrototypeOf(result),Object.prototype);
+assert.deepEqual(Object.keys(result).sort(),['__proto__','constructor','nul\0key','own'].sort());
+assert.equal(result.__proto__,'literal key');assert.equal(result['nul\0key'],'preserved');
+assert.throws(()=>native.probeRoundTripMap([]));
+for(const value of [1e100,-1e100,Infinity,NaN])assert.throws(()=>native.probeFloat(value));
+assert.equal(native.probeFloat(1.25),1.25);
+assert.equal(native.initialize({...DEFAULT_CONFIG,address:'http://127.0.0.1',port:'9',notificationServerAddress:'ws://127.0.0.1:9',logToConsole:false,showVersionInfo:false,logLevel:'error',logFilePath:'.runtime/hardening.log'}),0);
+let frames=0;
+try {
+  const before=native.getDiagnostics().droppedCallbacks;
+  native.probeFrameBurst(()=>frames++,30,4*1024*1024);
+  const queued=native.getDiagnostics();
+  assert.equal(queued.queuedFrameBytes,64n*1024n*1024n);
+  assert.equal(queued.droppedCallbacks-before,14n);
+  await pause();assert.equal(frames,16);assert.equal(native.getDiagnostics().queuedFrameBytes,0n);
+  native.probeFrameBurst(()=>frames++,30,4*1024*1024);
+  native.stopProbeCallbacks();const canceledAt=frames;
+  await pause();assert.equal(frames,canceledAt);assert.equal(native.getDiagnostics().queuedFrameBytes,0n);
+} finally { native.stopProbeCallbacks();native.shutdown(); }
+const report={status:'passed',checks:['test binding rejected','map own keys only','prototype and NUL keys preserved','float overflow rejected','frame payload budget enforced','delivery releases budget','cancel releases queued payloads'],maxQueuedFrameBytes:String(native.getDiagnostics().maxQueuedFrameBytes)};
+writeFileSync('audit/server-hardening.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

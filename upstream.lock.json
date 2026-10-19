@@ -1,0 +1,12 @@
+{
+  "sdkVersion": "3.3.7",
+  "revision": "79c6cc3c0021c7e72d5d94bb37b3dafb9fa50578",
+  "dirtySdk": [],
+  "auditDigest": "a54d206a49c6636758955f00dffa3de71e14ed31c960f6533c161c560cfc824d",
+  "digestScope": "LF-normalized Java + sdk/src + sdk/cmake + SWIG interface + build entrypoints; excludes deps and prebuilt binaries",
+  "defaultSourcePath": "../official-demo/sdk",
+  "productionTarget": "linux-x64-glibc",
+  "nodeApiVersion": 8,
+  "repository": "https://github.com/dji-sdk/Cloud-API-2",
+  "commitUrl": "https://github.com/dji-sdk/Cloud-API-2/commit/79c6cc3c0021c7e72d5d94bb37b3dafb9fa50578"
+}

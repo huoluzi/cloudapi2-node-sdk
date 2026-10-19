@@ -1,0 +1,74 @@
+{
+  "name": "cloudapi2-node-sdk",
+  "version": "0.2.0-rc.2",
+  "private": true,
+  "description": "Node.js binding for DJI Cloud API 2 3.3.7 with audited Java business API coverage",
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "native/addon.cpp",
+    "native/generic.inc",
+    "native/generated/includes.inc",
+    "native/generated/converters.inc",
+    "native/generated/getters.inc",
+    "native/generated/dispatch.inc",
+    "CMakeLists.txt",
+    "scripts/build-native.mjs",
+    "scripts/patch-staged-sdk.mjs",
+    "scripts/verify-native.mjs",
+    "scripts/doctor.mjs",
+    "audit/java-api-inventory.json",
+    "README.md",
+    "NOTICE",
+    "LICENSE",
+    "LICENSES",
+    "docs/compatibility.md",
+    "docs/building.md",
+    "docs/licensing.md",
+    "upstream.lock.json",
+    "native/linux-x64",
+    "examples",
+    "scripts/live-config.mjs",
+    "scripts/verify-prebuilt.mjs",
+    "scripts/prebuilt-package.mjs",
+    "third_party",
+    "docs/disclaimer.md",
+    "docs/prebuilt.md"
+  ],
+  "engines": {
+    "node": "^22.0.0 || ^24.0.0"
+  },
+  "scripts": {
+    "audit:java": "node scripts/audit-java.mjs",
+    "audit:check": "node scripts/audit-java.mjs --check",
+    "doctor": "node scripts/doctor.mjs",
+    "build": "node scripts/build-ts.mjs",
+    "build:native": "node scripts/build-native.mjs",
+    "test": "node scripts/test.mjs",
+    "test:native": "node scripts/smoke-native.mjs",
+    "verify:native": "node scripts/verify-native.mjs",
+    "check:public": "node scripts/check-public.mjs",
+    "export:source": "node scripts/export-source.mjs",
+    "test:package": "node scripts/test-package.mjs",
+    "test:conformance": "node scripts/run-conformance.mjs",
+    "prepack": "node scripts/build-ts.mjs",
+    "demo": "node demo/server.mjs",
+    "generate:modules": "node scripts/generate-modules.mjs",
+    "generate": "node scripts/generate.mjs",
+    "verify:prebuilt": "node scripts/verify-prebuilt.mjs",
+    "export:release": "node scripts/export-source.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "22.20.5"
+  }
+}

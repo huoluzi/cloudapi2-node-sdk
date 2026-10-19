@@ -1,0 +1,86 @@
+// Copyright (c) 2026 SZ DJI Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+// Modified for the independent Node.js binding in 2026; see NOTICE.
+import com.dji.flighthubsdk.generated.*;
+public class ProbeDroneOsdModule extends IDroneOsdModule { public ProbeDroneOsdModule(){super();}
+@Override public int listenAircraftBatteryInfoWrapper(AircraftBatteryInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftBatteryInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public int listenAircraftAttitudeWrapper(AircraftAttitudeCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftAttitudeWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public int listenAircraftLocationWrapper(AircraftLocationCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftLocationWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public int listenAircraftModeCodeWrapper(AircraftModeCodeCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftModeCodeWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public int listenAircraftWindSpeedWrapper(AircraftWindSpeedCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftWindSpeedWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public int listenAircraftPayloadsOsdInfoWrapper(AircraftPayloadsOsdInfoListCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftPayloadsOsdInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftPayloadsOsdInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftPayloadsOsdInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftGearWrapper(AircraftGearCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftGearWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftGearWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftGearWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftHomeDistanceWrapper(AircraftHomeDistanceCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftHomeDistanceWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftHomeDistanceWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftHomeDistanceWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftPositionStateWrapper(AircraftPositionStateCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftPositionStateWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftPositionStateWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftPositionStateWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftControlSourceWrapper(AircraftControlSourceCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftControlSourceWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftControlSourceWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftControlSourceWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftLimitsInfoWrapper(AircraftLimitsInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftLimitsInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftLimitsInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftLimitsInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftBatteryWarningThresholdsWrapper(AircraftBatteryWarningThresholdsCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftBatteryWarningThresholdsWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftBatteryWarningThresholdsWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftBatteryWarningThresholdsWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftFirmwareStatusWrapper(AircraftFirmwareStatusCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftFirmwareStatusWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftFirmwareStatusWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftFirmwareStatusWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftTotalFlightInfoWrapper(AircraftTotalFlightInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftTotalFlightInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftTotalFlightInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftTotalFlightInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftActivationTimeWrapper(AircraftActivationTimeCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftActivationTimeWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftActivationTimeWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftActivationTimeWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftMaintainStatusInfoWrapper(AircraftMaintainStatusInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftMaintainStatusInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftMaintainStatusInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftMaintainStatusInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftNightLightsStateWrapper(AircraftNightLightsStateCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftNightLightsStateWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftNightLightsStateWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftNightLightsStateWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftObstacleAvoidanceStateWrapper(AircraftObstacleAvoidanceStateCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftObstacleAvoidanceStateWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftObstacleAvoidanceStateWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftObstacleAvoidanceStateWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftStorageInfoWrapper(AircraftStorageInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftStorageInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftStorageInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftStorageInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftTrackIdWrapper(AircraftTrackIdCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftTrackIdWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftTrackIdWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftTrackIdWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftComplianceInfoWrapper(AircraftComplianceInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftComplianceInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftComplianceInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftComplianceInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftPayloadsCamerasListWrapper(AircraftPayloadsCamerasListCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftPayloadsCamerasListWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftPayloadsCamerasListWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftPayloadsCamerasListWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftRcLostActionWrapper(AircraftRcLostActionCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftRcLostActionWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftRcLostActionWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftRcLostActionWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftRthInfoWrapper(AircraftRthInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftRthInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftRthInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftRthInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftHomeGeographicalInfoWrapper(AircraftHomeGeographicalInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftHomeGeographicalInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftHomeGeographicalInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftHomeGeographicalInfoWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftCurrentRthModeWrapper(AircraftCurrentRthModeCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftCurrentRthModeWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftCurrentRthModeWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftCurrentRthModeWrapper",new Object[]{listen_id});}
+@Override public int listenFlightTasksExceptionWrapper(FlightTaskExceptionCallback callback) {JavaApiOracle.record("DroneOsdModule","listenFlightTasksExceptionWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftBatteryInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftBatteryInfoWrapper",new Object[]{listen_id});}
+@Override public void cancelListenAircraftAttitudeWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftAttitudeWrapper",new Object[]{listen_id});}
+@Override public void cancelListenAircraftLocationWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftLocationWrapper",new Object[]{listen_id});}
+@Override public void cancelListenAircraftModeCodeWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftModeCodeWrapper",new Object[]{listen_id});}
+@Override public void cancelListenAircraftWindSpeedWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftWindSpeedWrapper",new Object[]{listen_id});}
+@Override public void cancelListenFlightTasksExceptionWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenFlightTasksExceptionWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftControlCodeWrapper(AircraftControlCodeCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftControlCodeWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftControlCodeWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftControlCodeWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftSpeedWrapper(AircraftSpeedCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftSpeedWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftSpeedWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftSpeedWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftPayloadsCameraLiveviewWorldRegionWrapper(AircraftPayloadsCameraLiveviewWorldRegionCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftPayloadsCameraLiveviewWorldRegionWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftPayloadsCameraLiveviewWorldRegionWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftPayloadsCameraLiveviewWorldRegionWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftPayloadsGimbalAttitudeWrapper(AircraftPayloadsGimbalAttitudeCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftPayloadsGimbalAttitudeWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftPayloadsGimbalAttitudeWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftPayloadsGimbalAttitudeWrapper",new Object[]{listen_id});}
+@Override public int listenAircraftPayloadsListWrapper(AircraftPayloadsListCallback callback) {JavaApiOracle.record("DroneOsdModule","listenAircraftPayloadsListWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenAircraftPayloadsListWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenAircraftPayloadsListWrapper",new Object[]{listen_id});}
+@Override public int listenControlRightsCloudControlStatusWrapper(ControlRightsCloudControlStatusCallback callback) {JavaApiOracle.record("DroneOsdModule","listenControlRightsCloudControlStatusWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenControlRightsCloudControlStatusWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenControlRightsCloudControlStatusWrapper",new Object[]{listen_id});}
+@Override public int listenControlRightsDeviceControlStatusWrapper(ControlRightsDeviceControlStatusCallback callback) {JavaApiOracle.record("DroneOsdModule","listenControlRightsDeviceControlStatusWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenControlRightsDeviceControlStatusWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenControlRightsDeviceControlStatusWrapper",new Object[]{listen_id});}
+@Override public int listenFlightTasksMediaFileDisplayAvailableWrapper(FlightTasksMediaFileDisplayAvailableCallback callback) {JavaApiOracle.record("DroneOsdModule","listenFlightTasksMediaFileDisplayAvailableWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenFlightTasksMediaFileDisplayAvailableWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenFlightTasksMediaFileDisplayAvailableWrapper",new Object[]{listen_id});}
+@Override public int listenHsiInfoWrapper(HsiInfoCallback callback) {JavaApiOracle.record("DroneOsdModule","listenHsiInfoWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenHsiInfoWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenHsiInfoWrapper",new Object[]{listen_id});}
+@Override public int listenDroneModeCodeReasonWrapper(DroneModeCodeReasonCallback callback) {JavaApiOracle.record("DroneOsdModule","listenDroneModeCodeReasonWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenDroneModeCodeReasonWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenDroneModeCodeReasonWrapper",new Object[]{listen_id});}
+@Override public int listenDroneDongleInfosWrapper(DroneDongleInfosCallback callback) {JavaApiOracle.record("DroneOsdModule","listenDroneDongleInfosWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenDroneDongleInfosWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenDroneDongleInfosWrapper",new Object[]{listen_id});}
+@Override public int listenDroneFlysafeDatabaseVersionWrapper(DroneFlysafeDatabaseVersionCallback callback) {JavaApiOracle.record("DroneOsdModule","listenDroneFlysafeDatabaseVersionWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenDroneFlysafeDatabaseVersionWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenDroneFlysafeDatabaseVersionWrapper",new Object[]{listen_id});}
+@Override public int listenDroneWpmzVersionWrapper(DroneWpmzVersionCallback callback) {JavaApiOracle.record("DroneOsdModule","listenDroneWpmzVersionWrapper",new Object[]{});JavaApiOracle.respond(callback);return 73;}
+@Override public void cancelListenDroneWpmzVersionWrapper(int listen_id) {JavaApiOracle.record("DroneOsdModule","cancelListenDroneWpmzVersionWrapper",new Object[]{listen_id});}
+}

@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "path": "third_party/libwebsockets-2.4.2.tar.gz",
+      "component": "libwebsockets",
+      "version": "2.4.2",
+      "revision": "8964ce9db75a98e463dfafd2e89f2bc8a95ec6ed",
+      "url": "https://codeload.github.com/warmcat/libwebsockets/tar.gz/8964ce9db75a98e463dfafd2e89f2bc8a95ec6ed",
+      "bytes": 3777592,
+      "sha256": "0bd75708059cf7ffba4bbadc8bb40c590e2cf18f25b9f35e087198de6c2e182e"
+    }
+  ]
+}
